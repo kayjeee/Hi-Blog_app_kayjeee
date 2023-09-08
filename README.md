@@ -1,6 +1,6 @@
 <a name="readme-top"></a>
 
-# <div align="center">🛰KayJeee_postgresql_Blogapp🚀</div>
+# <div align="center">🛰Hi-Blog_app_kayjeee🚀</div>
 
 # 📗 Table of Contents
 
@@ -24,7 +24,7 @@
   - [🙏 Acknowledgments ](#-acknowledgments-)
   - [📝 License ](#-license-)
 
-# 📖 KayJeee_postgresql_Blogapp <a name="about-project"></a>
+# 📖 Hi-Blog_app_kayjeee <a name="about-project"></a>
 
 This repository includes  a console app that will help you to keep a record of different types of things you own: books, music albums, movies, and games.  project is a repository consisting of the following files:
 
@@ -70,8 +70,8 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
 ```
-  git clone hhttps://github.com/derrick1451/ruby-capstone.git
-  cd ruby-capstone
+  git clone https://github.com/kayjeee/Hi-Blog_app_kayjeee.git
+  cd Hi-Blog_app_kayjeee/
 ```
 
 ### Install
