@@ -19,9 +19,9 @@ RSpec.describe 'Combined Specs', type: :request do
       expect(response).to render_template('users/index')
 
       # Assert that the page contains the names of the test users
-      expect(response.body).to include('otmane')
-      expect(response.body).to include('Yusuf')
-      expect(response.body).to include('Rayan')
+      expect(response.body).to include('kamo')
+      expect(response.body).to include('kagiso')
+      expect(response.body).to include('kayjeee')
     end
   end
 
