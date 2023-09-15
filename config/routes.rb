@@ -3,13 +3,15 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  
   resources :users do
     resources :posts do
-      member do
-        post 'like'
-        delete 'unlike'
-      end
       resources :comments
+
+      member do
+        post 'like', to: 'posts#like', as: :like
+        delete 'unlike', to: 'posts#unlike', as: :unlike
+      end
     end
-  end  
+  end
 end
