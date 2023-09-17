@@ -7,19 +7,18 @@ default: &default
 
 development:
   <<: *default
-  database: localhost
+  database: blog_app_development
   username: postgres
-  password: <%= ENV["BLOG_APP_DATABASE_PASSWORD"] %>
+  password: OTMANE123@otmane
 
 test:
   <<: *default
-  database: localhost
+  database: blog_app_test
   username: postgres
-  password: <%= ENV["BLOG_APP_DATABASE_PASSWORD"] %>
-
+  password: OTMANE123@otmane
 
 production:
   <<: *default
-  database: localhost
-  username: postgres
+  database: blog_app_production
+  username: blog_app
   password: <%= ENV["BLOG_APP_DATABASE_PASSWORD"] %>
