@@ -116,7 +116,7 @@ To run the project, instantiate the class files in main.rb and execute the follo
 
 ## 🤝 Contributing <a name="contributing"></a>
 
-Contributions, [issues](https://github.com/derrick1451/ruby-capstone/issues), and feature requests are welcome!
+Contributions, [issues](https://github.com/kayjeee/Hi-Blog_app_kayjeee/issues), and feature requests are welcome!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
