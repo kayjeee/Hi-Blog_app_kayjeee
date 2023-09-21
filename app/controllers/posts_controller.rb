@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_user, only: [:index, :show]
+  before_action :load_user, only: %i[index show]
   load_and_authorize_resource :user
-  load_and_authorize_resource :post, through: :user, except: [:index, :show, :new, :create]
+  load_and_authorize_resource :post, through: :user, except: %i[index show new create]
 
   def index
     @posts = @user.posts
