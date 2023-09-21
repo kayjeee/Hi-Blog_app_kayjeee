@@ -4,9 +4,9 @@
 
 # 📗 Table of Contents
 
-- [�KayJeee_postgresql_Blogapp 🚀](#rKayJeee_postgresql_Blogapp-)
+- [�Hi-Blog_app_kayjeee 🚀](#Hi-Blog_app_kayjeee-)
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 KayJeee_postgresql_Blogapp ](#-KayJeee_postgresql_Blogapp-)
+- [📖 Hi-Blog_app_kayjeee ](#-Hi-Blog_app_kayjeee-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
