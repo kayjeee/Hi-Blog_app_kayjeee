@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:show]
   before_action :find_user, only: [:show]
 
   def index
-    @users = User.all
+    @users = User.includes(:posts).all
   end
 
   def show
-    @three_recent_posts = @user.three_most_recent_posts
+    @three_recent_posts = @user.three_most_recent_posts unless @user.nil?
   end
 
   def new; end
