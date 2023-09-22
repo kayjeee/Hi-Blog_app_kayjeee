@@ -1,53 +1,66 @@
 class PostsController < ApplicationController
-  before_action :find_user, only: %i[index show like unlike]
-  before_action :find_post, only: %i[show like unlike]
+  before_action :authenticate_user!
+  before_action :load_user, only: %i[index show]
+  load_and_authorize_resource :user
+  load_and_authorize_resource :post, through: :user, except: %i[index show new create]
 
   def index
-    @posts = @user.posts
+    page = params[:page] || 1
+    per_page = 10
+
+    @posts = Post.includes(:author)
+      .includes(:comments)
+      .where(author: params[:user_id])
+      .order(created_at: :asc)
+      .offset((page.to_i - 1) * per_page)
+      .limit(per_page)
+
+    @total_pages = (@user.posts.count.to_f / per_page).ceil
+    @author = @posts.first.author unless @posts.first.nil?
   end
 
-  def show; end
+  def show
+    @post = @user.posts.find(params[:id])
+  end
 
   def new
-    @user = current_user
-    @post = @user.posts.new
+    @post = current_user.posts.new
   end
 
   def create
     @post = current_user.posts.new(post_params)
+
     if @post.save
       flash[:notice] = 'Post created successfully.'
-      redirect_to user_path(current_user)
+      redirect_to user_post_path(current_user, @post)
     else
       render 'new'
     end
   end
 
-  def like
-    @like = @post.likes.new
-    @like.author = current_user
-    @like.save
-    redirect_to user_post_path(@user, @post)
+  def edit
+    # CanCanCan has already loaded and authorized the @post instance variable
   end
 
-  def unlike
-    @like = @post.likes.find_by(post: @post) # Find the like
-    @like&.destroy # Destroy the like if found
-    redirect_to user_post_path(@user, @post)
+  def update
+    if @post.update(post_params)
+      flash[:notice] = 'Post updated successfully.'
+      redirect_to user_post_path(current_user, @post)
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @post.destroy
+    flash[:notice] = 'Post deleted successfully.'
+    redirect_to user_posts_path(current_user)
   end
 
   private
 
-  def find_user
+  def load_user
     @user = User.find(params[:user_id])
-  end
-
-  def find_post
-    @post = @user.posts.find_by(id: params[:id])
-    return unless @post.nil?
-
-    flash[:alert] = 'Post not found, back to posts page'
-    redirect_to user_posts_path(@user)
   end
 
   def post_params
